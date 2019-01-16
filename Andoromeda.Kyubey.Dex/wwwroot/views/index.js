@@ -1,8 +1,9 @@
 ﻿app = new Vue({
     router: router,
     data: {
-        chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-        host: 'nodes.get-scatter.com',
+        chainId: '33cc2426f1b258ef8c798c34c0360b31732ea27a2d7e35a65797850a86d1ba85',
+        chainSymbol: 'BOS',
+        host: '47.254.82.241:80',
         account: null,
         uuid: null,
         loginMode: null,

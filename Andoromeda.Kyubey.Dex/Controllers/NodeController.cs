@@ -1,5 +1,6 @@
 ﻿using Andoromeda.Framework.EosNode;
 using Andoromeda.Framework.Logger;
+using Andoromeda.Kyubey.Dex.Constant;
 using Andoromeda.Kyubey.Dex.Models;
 using Andoromeda.Kyubey.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -64,7 +65,7 @@ namespace Andoromeda.Kyubey.Dex.Controllers
                     responseData.Add(x, currentTokenBalance);
                 }
             });
-            responseData.Add("EOS", await nodeApiInvoker.GetCurrencyBalanceAsync(account, "eosio.token", "EOS", cancellationToken));
+            responseData.Add(RootConstant.ChainSymbol, await nodeApiInvoker.GetCurrencyBalanceAsync(account, "eosio.token", RootConstant.ChainSymbol, cancellationToken));
             return ApiResult(responseData);
         }
 

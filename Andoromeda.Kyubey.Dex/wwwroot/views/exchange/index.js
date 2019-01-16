@@ -1,4 +1,4 @@
-﻿component.data = function () {
+component.data = function () {
     return {
         isMobileCandlestickFullScreen: false,
         sellOrders: [],
@@ -723,7 +723,7 @@ component.methods = {
             this.balanceView = qv.createView(`/api/v1/lang/${app.lang}/Node/${app.account.name}/balance/${this.tokenId}`, {});
             this.balanceView.fetch(res => {
                 if (res.code - 0 === 200) {
-                    self.eosBalance = parseFloat(res.data['EOS'] || 0);
+                    self.eosBalance = parseFloat(res.data[app.chainSymbol] || 0);
                     self.tokenBalance = parseFloat(res.data[this.tokenId.toUpperCase()] || 0);
                 }
             });
