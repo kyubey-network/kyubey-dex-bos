@@ -18,14 +18,14 @@ namespace Andoromeda.Kyubey.Dex
             services.AddMvc();
             services.AddConfiguration2(out var config, "appsettings");
 
-            services.AddDbContext<KyubeyContext>(x => x.UseMySql(config["MySql"]));
+            services.AddDbContext<KyubeyContext>(x => x.UseMySql(config["DexBosMySql"]));
             services.AddSwaggerGen(x =>
             {
                 x.SwaggerDoc("v1", new Info() { Title = "Kyubey Dex", Version = "v1" });
                 x.DocInclusionPredicate((docName, apiDesc) => apiDesc.HttpMethod != null);
                 x.DescribeAllEnumsAsStrings();
             });
-            services.AddMySqlLogger("kyubey-dex", config["MySql"]);
+            services.AddMySqlLogger("kyubey-dex", config["DexBosMySql"]);
 
             services.AddNodeServices(x =>
                 x.ProjectPath = "./Node"
