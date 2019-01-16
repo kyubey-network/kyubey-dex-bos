@@ -1,7 +1,7 @@
 ﻿component.data = function () {
-    return { 
+    return {
         tokens: [],
-        listWithFiter :[],
+        listWithFiter: [],
         searchText: '',
         favoriteObj: {}
     };
@@ -11,25 +11,25 @@ component.methods = {
     searchToken: function () {
         if (this.searchText !== '') {
             this.listWithFiter = this.tokens.filter(item => {
-                return item.symbol.toUpperCase().includes(this.searchText.toUpperCase())
-            })
+                return item.symbol.toUpperCase().includes(this.searchText.toUpperCase());
+            });
         } else {
             this.listWithFiter = this.tokens;
         }
     },
 
     goToEosExchange: function (symbol) {
-        if (symbol === 'EOS') {
+        if (symbol === app.chainSymbol) {
             return;
         }
-        app.redirect('/exchange/:id', '/exchange/' + symbol, { id: symbol }, {})
+        app.redirect('/exchange/:id', '/exchange/' + symbol, { id: symbol }, {});
     },
 
     toggleFav(token) {
         const isAdd = !this.favoriteObj[token];
         app.toggleFav(token, isAdd, () => {
             this.favoriteObj[token] = isAdd;
-        })
+        });
     },
 
     getFavoriteList() {
@@ -38,24 +38,24 @@ component.methods = {
                 let favoriteObj = {};
                 let favoriteList = res.data || [];
                 favoriteList.forEach((item) => {
-                    favoriteObj[item.symbol] = item.favorite
-                })
+                    favoriteObj[item.symbol] = item.favorite;
+                });
                 this.favoriteObj = favoriteObj;
             }
-        })
+        });
     },
 
     filterFav() {
         this.control.fav = !this.control.fav;
         if (this.control.fav) {
             this.tokenTable = this.tokenTable.filter((item) => {
-                return this.favoriteObj[item.symbol]
-            })
+                return this.favoriteObj[item.symbol];
+            });
         } else {
-            this.tokenTable = this.tokenTableSource
+            this.tokenTable = this.tokenTableSource;
         }
     }
-} 
+};
 
 component.computed = {
     account: function () {
@@ -75,7 +75,7 @@ component.computed = {
 
 component.created = function () {
     app.mobile.nav = 'assets';
-    var self = this
+    var self = this;
     if (!app.isSignedIn) {
         app.redirect('/');
     }
@@ -85,5 +85,5 @@ component.created = function () {
             self.tokens = res.data;
             self.listWithFiter = res.data;
         }
-    })
+    });
 };

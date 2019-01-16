@@ -1,3 +1,4 @@
+using Andoromeda.Kyubey.Dex.Constant;
 using Andoromeda.Kyubey.Dex.Extensions;
 using Andoromeda.Kyubey.Dex.Hubs;
 using Andoromeda.Kyubey.Dex.Middlewares;
@@ -39,7 +40,7 @@ namespace Andoromeda.Kyubey.Dex
                     .AllowAnyHeader()
             ));
 
-            services.AddEosNodeApiInvoker();
+            services.AddEosNodeApiInvoker(RootConstant.NodeAddress);
 
             services.AddTimedJob();
 

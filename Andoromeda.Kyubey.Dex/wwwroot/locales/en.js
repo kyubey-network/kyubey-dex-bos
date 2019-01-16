@@ -83,7 +83,7 @@ const en = {
     my_account: 'My account',
     available_balance: 'Available balance',
     freeze_balance: 'Frozen',
-    valuation: 'Value',
+    valuation: 'Value({symbol})',
     operating: 'Token',
     go_to_trade: 'Go to trade',
     currency: 'Token',

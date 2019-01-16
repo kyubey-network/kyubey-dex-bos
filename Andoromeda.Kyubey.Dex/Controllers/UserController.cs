@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Andoromeda.Framework.EosNode;
 using Andoromeda.Framework.Logger;
+using Andoromeda.Kyubey.Dex.Constant;
 using Andoromeda.Kyubey.Dex.Models;
 using Andoromeda.Kyubey.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -186,9 +187,9 @@ namespace Andoromeda.Kyubey.Dex.Controllers
             {
                 IconSrc = "/img/eos.png",
                 Freeze = buyList.Sum(x => x.FreezeEOS),
-                Symbol = "EOS",
+                Symbol = RootConstant.ChainSymbol,
                 UnitPrice = 1,
-                Valid = nodeApiInvoker.GetCurrencyBalanceAsync(account, "eosio.token", "EOS", cancellationToken).Result
+                Valid = nodeApiInvoker.GetCurrencyBalanceAsync(account, "eosio.token", RootConstant.ChainSymbol, cancellationToken).Result
             });
 
             tokens.ForEach(x =>

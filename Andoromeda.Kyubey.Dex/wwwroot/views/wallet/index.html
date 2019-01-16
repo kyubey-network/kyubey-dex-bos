@@ -5,13 +5,12 @@
             <span class="wallet-account-name">{{account.name}}</span>
         </div>
         <div class="wallet-evaluated-outer">
-            <strong>{{ parseFloat(totalEvaluated).toFixed(4) }}</strong> EOS
+            <strong>{{ parseFloat(totalEvaluated).toFixed(4) }}</strong> {{$root.chainSymbol}}
         </div>
         <div class="wallet-subline-outer">
             {{$t('current_total_valuation')}}
         </div>
     </div>
-
     <div class="home-page">
         <section>
             <div class="table-container">
@@ -38,14 +37,14 @@
                             <th class="text-left symbol-th" scope="col">{{$t('token')}}</th>
                             <th class="text-right" scope="col">{{$t('available_balance')}}</th>
                             <th class="text-right" scope="col">{{$t('freeze_balance')}}</th>
-                            <th class="text-right" scope="col">{{$t('valuation')}}</th>
+                            <th class="text-right" scope="col">{{$t('valuation', { symbol:$root.chainSymbol})}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="cursor: pointer;" v-for="(item, index) in listWithFiter" :key="index"
                             @click="goToEosExchange(item.symbol)">
                             <td scope="row">
-                                <i class="my-star" :class="{'my-star-active': favoriteObj[item.symbol]}" @click.stop="toggleFav(item.symbol)" v-if="item.symbol !== 'EOS'"></i>
+                                <i class="my-star" :class="{'my-star-active': favoriteObj[item.symbol]}" @click.stop="toggleFav(item.symbol)" v-if="item.symbol !== '{{$root.chainSymbol}}'"></i>
                             </td>
                             <td class="text-left">
                                 <img :src="item.iconSrc" style="width: 30px; border-radius:50%">
@@ -53,7 +52,7 @@
                             </td>
                             <td class="text-right"><font size="3" color="#FFB500">{{parseFloat(item.valid).toFixed(4)}}</font></td>
                             <td class="text-right"><font size="3">{{parseFloat(item.freeze).toFixed(4)}}</font></td>
-                            <td class="text-right"><font size="3">{{parseFloat(item.eos).toFixed(4)}} EOS</font></td>
+                            <td class="text-right"><font size="3">{{parseFloat(item.eos).toFixed(4)}} {{$root.chainSymbol}}</font></td>
                         </tr>
                         <tr v-if="listWithFiter.length === 0">
                             <td colspan="5" class="nodata">

@@ -237,7 +237,7 @@ component.methods = {
         var self = this;
         const { account, requiredFields, eos } = app;
         const $t = this.$t.bind(this);
-        eos.contract('kyubeydex.bp', { requiredFields })
+        eos.contract(app.dexAccount, { requiredFields })
             .then(contract => {
                 if (type === 'buy') {
                     return contract.cancelbuy(
@@ -318,7 +318,7 @@ component.methods = {
         const $t = this.$t.bind(this);
 
         if (this.control.trade === 'limit') {
-            var reqObj = this._getExchangeRequestObj(app.account.name, "kyubeydex.bp", buyTotal, "eosio.token", "EOS", 4, app.uuid, `${buyAmount.toFixed(4)} ${buySymbol}`);
+            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, buyTotal, "eosio.token", "EOS", 4, app.uuid, `${buyAmount.toFixed(4)} ${buySymbol}`);
             app.startQRCodeExchange($t('exchange_tip'), JSON.stringify(reqObj),
                 [
                     {
@@ -337,7 +337,7 @@ component.methods = {
                 ]);
         }
         else if (this.control.trade === 'market') {
-            var reqObj = this._getExchangeRequestObj(app.account.name, "kyubeydex.bp", buyTotal, "eosio.token", "EOS", 4, app.uuid, `0.0000 ${this.tokenId}`);
+            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, buyTotal, "eosio.token", "EOS", 4, app.uuid, `0.0000 ${this.tokenId}`);
             app.startQRCodeExchange($t('exchange_tip'), JSON.stringify(reqObj),
                 [
                     {
@@ -360,8 +360,8 @@ component.methods = {
                 .then(contract => {
                     return contract.transfer(
                         account.name,
-                        'kyubeydex.bp',
-                        buyTotal.toFixed(4) + ' EOS',
+                        app.dexAccount,
+                        buyTotal.toFixed(4) + ' ' + app.chainSymbol,
                         buyAmount.toFixed(4) + ' ' + this.tokenId,
                         {
                             authorization: [`${account.name}@${account.authority}`]
@@ -380,8 +380,8 @@ component.methods = {
                 .then(contract => {
                     return contract.transfer(
                         account.name,
-                        'kyubeydex.bp',
-                        parseFloat(buyTotal).toFixed(4) + ' EOS',
+                        app.dexAccount,
+                        parseFloat(buyTotal).toFixed(4) + ' ' + app.chainSymbol,
                         `0.0000 ${this.tokenId}`,
                         {
                             authorization: [`${account.name}@${account.authority}`]
@@ -459,7 +459,7 @@ component.methods = {
         const $t = this.$t.bind(this);
 
         if (this.control.trade === 'limit') {
-            var reqObj = this._getExchangeRequestObj(app.account.name, "kyubeydex.bp", sellAmount, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `${sellTotal.toFixed(4)} EOS`);
+            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, sellAmount, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `${sellTotal.toFixed(4)} EOS`);
             app.startQRCodeExchange($t('exchange_tip'), JSON.stringify(reqObj),
                 [
                     {
@@ -478,7 +478,7 @@ component.methods = {
                 ]);
         }
         else if (this.control.trade === 'market') {
-            var reqObj = this._getExchangeRequestObj(app.account.name, "kyubeydex.bp", sellTotal, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `0.0000 EOS`);
+            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, sellTotal, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `0.0000 EOS`);
 
             app.startQRCodeExchange($t('exchange_tip'), JSON.stringify(reqObj),
                 [
@@ -502,7 +502,7 @@ component.methods = {
                 .then(contract => {
                     return contract.transfer(
                         account.name,
-                        'kyubeydex.bp',
+                        app.dexAccount,
                         sellAmount.toFixed(4) + ' ' + sellSymbol,
                         sellTotal.toFixed(4) + ' EOS',
                         {
@@ -523,7 +523,7 @@ component.methods = {
                 .then(contract => {
                     return contract.transfer(
                         account.name,
-                        'kyubeydex.bp',
+                        app.dexAccount,
                         sellTotal.toFixed(4) + ' ' + sellSymbol,
                         `0.0000 EOS`,
                         {

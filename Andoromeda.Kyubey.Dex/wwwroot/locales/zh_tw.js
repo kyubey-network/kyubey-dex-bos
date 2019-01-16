@@ -85,7 +85,7 @@ const zh_tw = {
     my_account: '我的賬戶',
     available_balance: '可用餘額',
     freeze_balance: '凍結',
-    valuation: '估值',
+    valuation: '估值({symbol})',
     operating: '操作',
     go_to_trade: '去交易',
     currency: '幣種',

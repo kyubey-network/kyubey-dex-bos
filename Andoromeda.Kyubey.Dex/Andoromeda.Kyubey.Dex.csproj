@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Andoromeda.Framework.EosNode" Version="*" />
+    <PackageReference Include="Andoromeda.Framework.EosNode" Version="0.3.1" />
     <PackageReference Include="Andoromeda.Framework.Logger" Version="*" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Andoromeda.Kyubey.Models" Version="*" />
