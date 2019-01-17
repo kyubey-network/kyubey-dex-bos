@@ -5,7 +5,7 @@
             <div class="footer-language-selector" @click="$root.showMobileLanguageSelector">
                 <img src="/img/more/language.svg" alt="" class="mr-2"><span class="mr-2">{{$t('current_language')}}</span><i class="fa fa-caret-down" aria-hidden="true"></i>
             </div>
-            <div>{{$t('turnover_24H')}}{{parseFloat($root.volume).toFixed(4)}} EOS</div>
+            <div>{{$t('turnover_24H')}}{{parseFloat($root.volume).toFixed(4)}} {{$root.chainSymbol}}</div>
             <div>{{$t('footer_warning')}}</div>
             <div>Kyubey {{ new Date().getFullYear() }}.All rights reserved.</div>
         </div>

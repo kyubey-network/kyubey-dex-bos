@@ -459,7 +459,7 @@ component.methods = {
         const $t = this.$t.bind(this);
 
         if (this.control.trade === 'limit') {
-            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, sellAmount, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `${sellTotal.toFixed(4)} EOS`);
+            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, sellAmount, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `${sellTotal.toFixed(4)} ${app.chainSymbol}`);
             app.startQRCodeExchange($t('exchange_tip'), JSON.stringify(reqObj),
                 [
                     {
@@ -467,18 +467,18 @@ component.methods = {
                         text: `${$t('exchange_sell')} ${sellSymbol}`
                     },
                     {
-                        text: `${$t('exchange_sellprice')}: ${parseFloat(sellPrice).toFixed(8)} EOS`
+                        text: `${$t('exchange_sellprice')}: ${parseFloat(sellPrice).toFixed(8)} ${app.chainSymbol}`
                     },
                     {
                         text: `${$t('exchange_sellamount')}: ${parseFloat(sellAmount).toFixed(4)} ${sellSymbol}`
                     },
                     {
-                        text: `${$t('exchange_total')}: ${parseFloat(sellTotal).toFixed(4)} EOS`
+                        text: `${$t('exchange_total')}: ${parseFloat(sellTotal).toFixed(4)} ${app.chainSymbol}`
                     }
                 ]);
         }
         else if (this.control.trade === 'market') {
-            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, sellTotal, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `0.0000 EOS`);
+            var reqObj = this._getExchangeRequestObj(app.account.name, app.dexAccount, sellTotal, this.baseInfo.contract.transfer, sellSymbol, 4, app.uuid, `0.0000 ${app.chainSymbol}`);
 
             app.startQRCodeExchange($t('exchange_tip'), JSON.stringify(reqObj),
                 [
@@ -504,7 +504,7 @@ component.methods = {
                         account.name,
                         app.dexAccount,
                         sellAmount.toFixed(4) + ' ' + sellSymbol,
-                        sellTotal.toFixed(4) + ' EOS',
+                        sellTotal.toFixed(4) + ` ${app.chainSymbol}`,
                         {
                             authorization: [`${account.name}@${account.authority}`]
                         });
@@ -525,7 +525,7 @@ component.methods = {
                         account.name,
                         app.dexAccount,
                         sellTotal.toFixed(4) + ' ' + sellSymbol,
-                        `0.0000 EOS`,
+                        `0.0000 ${app.chainSymbol}`,
                         {
                             authorization: [`${account.name}@${account.authority}`]
                         });

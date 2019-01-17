@@ -3,7 +3,7 @@
         <div class="exchange-header">
             <img class="exchange-header-icon" :src="baseInfo.iconSrc" />
             <div class="exchange-header-text-outer">
-                <div class="exchange-header-token">{{tokenId}}/EOS</div>
+                <div class="exchange-header-token">{{tokenId}}/{{$root.chainSymbol}}</div>
                 <div class="exchange-header-publisher">{{baseInfo.contract.transfer}}</div>
             </div>
             <div class="exchange-header-star"><i class="my-star" :class="{'my-star-active': favoriteObj[tokenId]}" @click.stop="toggleFav(tokenId)" v-if="isSignedIn"></i></div>
@@ -47,7 +47,7 @@
                 <thead>
                     <tr>
                         <th>{{$t('date')}}</th>
-                        <th>{{$t('price')}}(EOS)</th>
+                        <th>{{$t('price')}}({{$root.chainSymbol}})</th>
                         <th>{{$t('amount')}}({{tokenId}})</th>
                     </tr>
                 </thead>
@@ -58,7 +58,7 @@
         <table class="exchange-table-header" v-if="mobile.summaryActive === 'order'">
             <tr>
                 <th>{{$t('buy')}}{{$t('amount')}}({{tokenId}})</th>
-                <th>{{$t('price')}}(EOS)</th>
+                <th>{{$t('price')}}({{$root.chainSymbol}})</th>
                 <th>{{$t('sell')}}{{$t('amount')}}({{tokenId}})</th>
             </tr>
         </table>
@@ -104,7 +104,7 @@
             <thead>
                 <tr>
                     <th>{{$t('date')}}</th>
-                    <th>{{$t('price')}}(EOS)</th>
+                    <th>{{$t('price')}}({{$root.chainSymbol}})</th>
                     <th>{{$t('amount')}}({{tokenId}})</th>
                 </tr>
             </thead>
@@ -181,12 +181,12 @@
                         </div>
                         <div class="exchange-main-amount-token">{{tokenId}}</div>
                         <div class="clear"></div>
-                        <div class="exchange-main-row-hint">≈ {{inputs.buyTotal}} EOS</div>
+                        <div class="exchange-main-row-hint">≈ {{inputs.buyTotal}} {{$root.chainSymbol}}</div>
                     </div>
                     <div class="exchange-main-row">
                         <div v-for="x in [0.25, 0.50, 0.75, 1.00]" class="exchange-type-button sm col-4" @click="handlePrecentChange('buyPrecent',x)" :class="{'outline-button-active': buyPrecent === x}">{{x*100}}%</div>
                         <div class="clear"></div>
-                        <div class="exchange-main-row-label">{{$t('balance')}}: {{parseFloat(eosBalance).toFixed(4)}} EOS</div>
+                        <div class="exchange-main-row-label">{{$t('balance')}}: {{parseFloat(eosBalance).toFixed(4)}} {{$root.chainSymbol}}</div>
                     </div>
                 </div>
                 <!--Sell-->
@@ -208,7 +208,7 @@
                         </div>
                         <div class="exchange-main-amount-token">{{tokenId}}</div>
                         <div class="clear"></div>
-                        <div class="exchange-main-row-hint">≈ {{inputs.sellTotal}} EOS</div>
+                        <div class="exchange-main-row-hint">≈ {{inputs.sellTotal}} {{$root.chainSymbol}}</div>
                     </div>
                     <div class="exchange-main-row">
                         <div v-for="x in [0.25, 0.50, 0.75, 1.00]" class="exchange-type-button sm col-4" @click="handlePrecentChange('sellPrecent',x)" :class="{'outline-button-active': sellPrecent === x}">{{x*100}}%</div>
@@ -226,7 +226,7 @@
                 <table class="exchange-main-delegate-table">
                     <thead>
                         <tr>
-                            <th>{{$t('price')}}(EOS)</th>
+                            <th>{{$t('price')}}({{$root.chainSymbol}})</th>
                             <th>{{$t('amount')}}({{tokenId}})</th>
                         </tr>
                     </thead>
@@ -262,7 +262,7 @@
                 <div v-for="(x, i) in openOrders" :key="i" class="exchange-main-current-item">
                     <div class="exchange-main-current-item-header">
                         <span :class="{'text-danger': x.type === 'sell', 'text-success': x.type === 'buy'}">{{x.type === 'sell' ? $t('sell'): $t('buy')}}</span>
-                        <span class="exchange-main-current-item-token-pair">{{x.symbol}}/EOS</span>
+                        <span class="exchange-main-current-item-token-pair">{{x.symbol}}/{{$root.chainSymbol}}</span>
                         <span class="exchange-main-current-item-date">{{formatTime(x.time)}}</span>
                         <button class="btn btn-primary btn-sm cancel-btn" v-on:click="exchangeCancel(x.symbol, x.type, x.id)">{{$t('cancel')}}</button>
                     </div>
@@ -275,7 +275,7 @@
                         <tr>
                             <td>{{parseFloat(x.price).toFixed(8)}}</td>
                             <td>{{parseFloat(x.amount).toFixed(4)}} {{x.symbol}}</td>
-                            <td>{{parseFloat(x.total).toFixed(4)}} EOS</td>
+                            <td>{{parseFloat(x.total).toFixed(4)}} {{$root.chainSymbol}}</td>
                         </tr>
                     </table>
                 </div>
@@ -288,7 +288,7 @@
                 <div v-for="(x, i) in orderHistory" :key="i" class="exchange-main-current-item">
                     <div class="exchange-main-current-item-header">
                         <span class="exchange-main-current-item-tag-red" :class="{'text-danger': x.type === 'sell', 'text-success': x.type === 'buy'}">{{x.type === 'sell' ? $t('sell'): $t('buy')}}</span>
-                        <span class="exchange-main-current-item-token-pair">{{x.symbol}}/EOS</span>
+                        <span class="exchange-main-current-item-token-pair">{{x.symbol}}/{{$root.chainSymbol}}</span>
                         <span class="exchange-main-current-item-date">{{formatTime(x.time)}}</span>
                         <span class="mini-text red">{{$t('deal_done')}}</span>
                     </div>
