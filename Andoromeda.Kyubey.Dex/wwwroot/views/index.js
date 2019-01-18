@@ -3,7 +3,7 @@
     data: {
         chainId: '33cc2426f1b258ef8c798c34c0360b31732ea27a2d7e35a65797850a86d1ba85',
         chainSymbol: 'BOS',
-        host: '47.254.82.241',
+        host: 'api.bostest.alohaeos.com',
         account: null,
         uuid: null,
         loginMode: null,
@@ -311,8 +311,8 @@
                 var network = {
                     blockchain: 'eos',
                     host: self.host,
-                    port: 80,
-                    protocol: 'http',
+                    port: 443,
+                    protocol: 'https',
                     chainId: self.chainId
                 };
                 scatter.getIdentity({ accounts: [network] }).then(identity => {
