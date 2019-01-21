@@ -1,14 +1,14 @@
 ﻿app = new Vue({
     router: router,
     data: {
-        chainId: '33cc2426f1b258ef8c798c34c0360b31732ea27a2d7e35a65797850a86d1ba85',
+        chainId: 'd5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a3d86',
         chainSymbol: 'BOS',
-        host: 'api.bostest.alohaeos.com',
+        host: 'api.bossweden.org',
         account: null,
         uuid: null,
         loginMode: null,
         eos: null,
-        dexAccount: 'kyubeydex2bp',
+        dexAccount: 'kyubeydexbos',
         requiredFields: null,
         currentHost: location.protocol + "//" + location.host,
         volume: 0,

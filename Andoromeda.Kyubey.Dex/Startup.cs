@@ -40,7 +40,7 @@ namespace Andoromeda.Kyubey.Dex
                     .AllowAnyHeader()
             ));
 
-            services.AddEosNodeApiInvoker(RootConstant.NodeAddress);
+            services.AddEosNodeApiInvoker(config["NodeAddress"]);
 
             services.AddTimedJob();
 
