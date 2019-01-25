@@ -13,7 +13,7 @@
                                 <span>/ {{$root.chainSymbol}}</span>
                             </p>
                             <button @click="showIntroduction = !showIntroduction" type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('currency_introduction')}}</button>
-                            <a href="https://bosibc.kyubey.net" target="_blank"><button type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('exchange_anchor')}}</button></a>
+                            <a href="https://bosibc.kyubey.net" target="_blank" v-if="$root.isAnchor(tokenId)"><button type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('exchange_anchor')}}</button></a>
                         </div>
                     </div>
                     <div class="infoitem">

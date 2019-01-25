@@ -3,7 +3,7 @@
         <div class="exchange-header">
             <img class="exchange-header-icon" :src="baseInfo.iconSrc" />
             <div class="exchange-header-text-outer">
-                <div class="exchange-header-token">{{tokenId}}<span v-if="$root.isAnchor(tokenId)">({{$t('anchor')}})</span>/{{$root.chainSymbol}}<a href="https://bosibc.kyubey.net" class="ml-3" target="_blank">{{$t('exchange_anchor')}}</a></div>
+                <div class="exchange-header-token">{{tokenId}}<span v-if="$root.isAnchor(tokenId)">({{$t('anchor')}})</span>/{{$root.chainSymbol}}<a href="https://bosibc.kyubey.net/bos2eos" class="ml-3" target="_blank">{{$t('exchange_anchor')}}</a></div>
                 <div class="exchange-header-publisher">{{baseInfo.contract.transfer}}</div>
             </div>
             <div class="exchange-header-star"><i class="my-star" :class="{'my-star-active': favoriteObj[tokenId]}" @click.stop="toggleFav(tokenId)" v-if="isSignedIn"></i></div>
