@@ -166,5 +166,7 @@ const en = {
     free: 'Free',
     handling_fee: 'Transaction fee',
     ok: 'Ok',
-    favorites_slogan: "Go ahead and add deals you're interested in, right"
+    favorites_slogan: "Go ahead and add deals you're interested in, right",
+    anchor: 'Anchor',
+    exchange_anchor: 'exchange anchor',
 };

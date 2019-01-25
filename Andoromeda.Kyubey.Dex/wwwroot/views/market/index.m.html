@@ -9,7 +9,7 @@
                             {{$t('optional')}}
                         </span>
                         <span v-else>
-                            EOS
+                            {{$root.chainSymbol}}
                         </span>
                     </td>
                     <td v-if="!control.fav" @click="mobile.mode = 'search'; focusMobileSearch();" class="market-filter-search-cell">
@@ -77,7 +77,7 @@
                 <td class="token-pair-cell">
                     <div class="token-pair">
                         <i class="my-star" :class="{'my-star-active': favoriteObj[item.symbol]}" @click.stop="toggleFav(item.symbol)" v-if="isSignedIn"></i>
-                        {{item.symbol}}/EOS
+                        {{item.symbol}}<span v-if="$root.isAnchor(item.symbol)">({{$t('anchor')}})</span>/{{$root.chainSymbol}}
                     </div>
                     <div class="token-volume">{{$t('volume_24H') +': '+item.volume_recent_day.toFixed(4)}} {{item.symbol}}</div>
                 </td>

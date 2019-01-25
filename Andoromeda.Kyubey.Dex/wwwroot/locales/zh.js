@@ -176,5 +176,7 @@ const zh = {
     mobile_footer_asset: '资产',
     mobile_footer_more: '更多',
     ok: '好的',
-    favorites_slogan: "快去添加你感兴趣的交易对吧"
+    favorites_slogan: "快去添加你感兴趣的交易对吧",
+    anchor: '锚定币',
+    exchange_anchor: '兑换锚定币',
 };

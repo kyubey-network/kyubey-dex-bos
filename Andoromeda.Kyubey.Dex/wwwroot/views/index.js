@@ -75,6 +75,10 @@
     watch: {
     },
     methods: {
+        isAnchor(symbol) {
+            var anchorArray = ['EOS'];
+            return (anchorArray.indexOf(symbol) !== -1);
+        },
         showMobileLanguageSelector() {
             $('.language-selector').modal('show');
         },

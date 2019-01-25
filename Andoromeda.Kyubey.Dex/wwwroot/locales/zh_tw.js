@@ -165,5 +165,7 @@ const zh_tw = {
     free: '免費',
     handling_fee: '手續費',
     ok: '好的',
-    favorites_slogan: "快去添加你感興趣的交易對吧"
+    favorites_slogan: "快去添加你感興趣的交易對吧",
+    anchor: '錨碇幣',
+    exchange_anchor: '兌換錨碇幣',
 };

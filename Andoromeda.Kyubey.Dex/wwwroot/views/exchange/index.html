@@ -9,10 +9,11 @@
                         </div>
                         <div class="d-inline-block">
                             <p class="token-title">
-                                <span>{{tokenId}}</span>
+                                <span>{{tokenId}}<span v-if="$root.isAnchor(tokenId)">({{$t('anchor')}})</span></span>
                                 <span>/ {{$root.chainSymbol}}</span>
                             </p>
                             <button @click="showIntroduction = !showIntroduction" type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('currency_introduction')}}</button>
+                            <a href="https://bosibc.kyubey.net" target="_blank"><button type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('exchange_anchor')}}</button></a>
                         </div>
                     </div>
                     <div class="infoitem">
@@ -354,7 +355,6 @@
                             </tr>
                         </tbody>
                     </table>
-
                     <nav class="text-center" v-if="pageCount>0">
                         <ul class="pagination">
                             <li><span :class="{'not-allowed': pageIndex <= 1}" @click="prev"> < </span></li>
