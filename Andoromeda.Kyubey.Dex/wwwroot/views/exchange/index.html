@@ -13,7 +13,7 @@
                                 <span>/ {{$root.chainSymbol}}</span>
                             </p>
                             <button @click="showIntroduction = !showIntroduction" type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('currency_introduction')}}</button>
-                            <a href="https://bosibc.kyubey.net" target="_blank" v-if="$root.isAnchor(tokenId)"><button type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('exchange_anchor')}}</button></a>
+                            <a href="https://bosibc.kyubey.net" class="ml-2" target="_blank" v-if="$root.isAnchor(tokenId)"><button type="button" class="btn btn-warning font-weight-bold token-detail-btn" style="font-size: 12px;">{{$t('exchange_anchor')}}</button></a>
                         </div>
                     </div>
                     <div class="infoitem">
@@ -128,7 +128,7 @@
                 <div class="card my-card e-submit-card">
                     <div class="my-card-header header-text-color">
                         <div @click="control.trade = 'limit'" class="border-button d-inline-block" :class="{'border-button-active': control.trade === 'limit'}">{{$t('limit_order')}}</div>
-                        <div @click="control.trade = 'market'" class="border-button d-inline-block" :class="{'border-button-active': control.trade === 'market'}">{{$t('market_order')}}</div>
+                        <!--<div @click="control.trade = 'market'" class="border-button d-inline-block" :class="{'border-button-active': control.trade === 'market'}">{{$t('market_order')}}</div>-->
                     </div>
                     <div class="container-fluid">
                         <div class="row">

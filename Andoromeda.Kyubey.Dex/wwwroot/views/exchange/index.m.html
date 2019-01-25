@@ -3,8 +3,8 @@
         <div class="exchange-header">
             <img class="exchange-header-icon" :src="baseInfo.iconSrc" />
             <div class="exchange-header-text-outer">
-                <div class="exchange-header-token">{{tokenId}}<span v-if="$root.isAnchor(tokenId)">({{$t('anchor')}})</span>/{{$root.chainSymbol}}<a href="https://bosibc.kyubey.net/bos2eos" class="ml-3" target="_blank">{{$t('exchange_anchor')}}</a></div>
-                <div class="exchange-header-publisher">{{baseInfo.contract.transfer}}</div>
+                <div class="exchange-header-token">{{tokenId}}<span v-if="$root.isAnchor(tokenId)">({{$t('anchor')}})</span>/{{$root.chainSymbol}}</div>
+                <div class="exchange-header-publisher">{{baseInfo.contract.transfer}}<a v-if="$root.isAnchor(tokenId)" href="https://bosibc.kyubey.net/bos2eos" style="font-size:14px;" class="ml-2" target="_blank">{{$t('exchange_anchor')}}</a></div>
             </div>
             <div class="exchange-header-star"><i class="my-star" :class="{'my-star-active': favoriteObj[tokenId]}" @click.stop="toggleFav(tokenId)" v-if="isSignedIn"></i></div>
             <div class="exchange-header-back" v-if="mobile.nav !== 'summary'" @click="mobile.nav = 'summary'"><i class="fa fa-line-chart"></i></div>
@@ -33,7 +33,6 @@
                 </div>
                 <div class="clear"></div>
             </div>
-
             <table class="exchange-table-header navigator">
                 <tr>
                     <th v-bind:class="{ active: mobile.summaryActive === 'candlestick' }" @click="mobile.summaryActive = 'candlestick'"><i class="fa fa-bar-chart"></i> {{$t('K_line_chart')}}</th>
@@ -42,7 +41,6 @@
                     <th v-bind:class="{ active: mobile.summaryActive === 'description' }" @click="mobile.summaryActive = 'description'"><i class="fa fa-info-circle"></i> {{$t('mobile_token_introduction')}}</th>
                 </tr>
             </table>
-
             <table class="exchange-table-history" v-if="mobile.summaryActive === 'history'">
                 <thead>
                     <tr>
@@ -51,7 +49,6 @@
                         <th>{{$t('amount')}}({{tokenId}})</th>
                     </tr>
                 </thead>
-
         </div>
     </div>
     <div v-if="mobile.nav === 'summary'" class="avoid-the-header">
@@ -62,7 +59,6 @@
                 <th>{{$t('sell')}}{{$t('amount')}}({{tokenId}})</th>
             </tr>
         </table>
-
         <div class="exchange-table-data-outer" v-if="mobile.summaryActive === 'order'">
             <div class="exchange-table-data-left">
                 <table class="exchange-table-data">
@@ -85,7 +81,6 @@
             <div class="full-screen-btn-box">
                 <i class="fa fa-expand" v-bind:class="{'fa-expand':!isMobileCandlestickFullScreen,'fa-compress':isMobileCandlestickFullScreen}" aria-hidden="true" @click="isMobileCandlestickFullScreen=!isMobileCandlestickFullScreen"></i>
             </div>
-
             <div class="interval" id="interval">
                 <span v-bind:class="{ 'active': chart.interval === 1 }" @click="chart.interval = 1">{{$t('k_1m')}}</span>
                 <span v-bind:class="{ 'active': chart.interval === 5 }" @click="chart.interval = 5">{{$t('k_5m')}}</span>
@@ -99,7 +94,6 @@
             </div>
             <div id="tv_chart_container"></div>
         </div>
-
         <table class="exchange-table-history" v-if="mobile.summaryActive === 'history'">
             <thead>
                 <tr>
@@ -116,7 +110,6 @@
                 </tr>
             </tbody>
         </table>
-
         <div class="exchange-description" v-if="mobile.summaryActive === 'description'">
             <div class="exchange-description-icon-outer">
                 <img :src="baseInfo.iconSrc" />
@@ -143,7 +136,6 @@
                 </tr>
             </table>
         </div>
-
         <div class="exchange-buttons">
             <div class="exchange-buttons-item green" @click="mobile.exchangeMode = 'buy'; mobile.nav = 'exchange'; buyAndSellStatus = true;">{{$t('buy')}}</div>
             <div class="exchange-buttons-item red" @click="mobile.exchangeMode = 'sell'; mobile.nav = 'exchange';  buyAndSellStatus = false;">{{$t('sell')}}</div>
@@ -230,7 +222,6 @@
                             <th>{{$t('amount')}}({{tokenId}})</th>
                         </tr>
                     </thead>
-
                     <tbody v-if="control.order !== 'buy'">
                         <tr v-for="(x, i) in sellOrders" :key="i" v-on:click="setPublish(x.unitPrice, x.amount, x.total)" :style="'background: linear-gradient(to left, RGBA(232,18,52,.2) ' + getcolorOccupationRatio(x.amount,maxAmountSellOrder) + ', #FFFFFF ' + getcolorOccupationRatio(x.amount,maxAmountSellOrder) + ')'" style="background: linear-gradient(to left, rgb(249,237,235) 33%, rgb(255,255,255) 33%);">
                             <td class="text-danger">{{parseFloat(x.unitPrice).toFixed(8)}}</td>
@@ -279,7 +270,6 @@
                         </tr>
                     </table>
                 </div>
-
                 <div v-if="openOrders.length === 0">
                     <p colspan="9" class="text-center">{{$t('noData')}}</p>
                 </div>
@@ -309,7 +299,6 @@
                     <p colspan="9" class="text-center">{{$t('noData')}}</p>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

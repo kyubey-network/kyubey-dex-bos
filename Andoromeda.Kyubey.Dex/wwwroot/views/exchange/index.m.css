@@ -205,11 +205,7 @@
     height: 50px;
 }
 
-.exchange-header-token {
-    font-size: 18px;
-    line-height: 18px;
-    padding: 10px 0 2px 0;
-}
+.exchange-header-token { font-size: 18px; line-height: 18px; padding: 5px 0px 10px; }
 
 .exchange-header-publisher {
     color: #888;
